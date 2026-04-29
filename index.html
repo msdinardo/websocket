@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Número en tiempo real</h1>
+<p id="num">...</p>
+
+<script>
+const ws = new WebSocket("ws://localhost:8765");
+
+ws.onopen = () => console.log("Conectado");
+
+ws.onmessage = (event) => {
+    document.getElementById("num").innerText = event.data;
+};
+
+ws.onclose = () => console.log("Desconectado");
+</script>
+
+</body>
+</html>
